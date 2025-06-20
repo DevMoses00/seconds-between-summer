@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://dams0xkhhr2e2"]
+
+[ext_resource type="Script" uid="uid://dartx52loxom" path="res://Scripts/main.gd" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://w2pbp1bs8lrx" path="res://Scenes/world_1.tscn" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://ckoaqys02eaya" path="res://Scenes/world_2.tscn" id="2_8gbba"]
+[ext_resource type="Texture2D" uid="uid://bbgohsjj2rbvx" path="res://icon.svg" id="2_21xkr"]
+[ext_resource type="PackedScene" uid="uid://bai31cgjserhn" path="res://Scenes/think_panel.tscn" id="3_6bp64"]
+[ext_resource type="Shader" uid="uid://c06lnf1a6uj3x" path="res://Shaders/main.gdshader" id="4_jjvhh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kry3j"]
+shader = ExtResource("4_jjvhh")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jjvhh"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_344ge"]
+specular_texture = ExtResource("2_21xkr")
+specular_color = Color(0.12, 0.0024, 0.0024, 1)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8gbba")
+
+[node name="SubViewportContainer1" type="SubViewportContainer" parent="."]
+custom_minimum_size = Vector2(960, 1080)
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 1080.0
+
+[node name="SubViewport1" type="SubViewport" parent="SubViewportContainer1"]
+handle_input_locally = false
+size = Vector2i(960, 1080)
+render_target_update_mode = 4
+
+[node name="World1" parent="SubViewportContainer1/SubViewport1" instance=ExtResource("1_bo1nx")]
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
+custom_minimum_size = Vector2(960, 1080)
+layout_mode = 0
+offset_left = 960.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="SubViewport2" type="SubViewport" parent="SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(960, 1080)
+render_target_update_mode = 4
+
+[node name="World2" parent="SubViewportContainer2/SubViewport2" instance=ExtResource("2_8gbba")]
+
+[node name="SeamEffect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_kry3j")
+layout_mode = 0
+offset_left = 900.0
+offset_right = 1024.0
+offset_bottom = 1080.0
+texture = SubResource("PlaceholderTexture2D_jjvhh")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="UI"]
+offset_left = 900.0
+offset_top = 661.0
+offset_right = 1028.0
+offset_bottom = 789.0
+texture_normal = ExtResource("2_21xkr")
+texture_pressed = SubResource("CanvasTexture_344ge")
+
+[node name="ThinkPanel" parent="UI" instance=ExtResource("3_6bp64")]
+visible = false
+
+[node name="CloseButton" type="TextureButton" parent="UI/ThinkPanel"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 571.0
+offset_right = 1028.0
+offset_bottom = 699.0
+texture_normal = ExtResource("2_21xkr")
+texture_pressed = SubResource("CanvasTexture_344ge")
+
+[connection signal="pressed" from="UI/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="UI/ThinkPanel/CloseButton" to="." method="_on_close_button_pressed"]

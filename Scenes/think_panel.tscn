@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://bai31cgjserhn"]
+
+[ext_resource type="Script" uid="uid://ybfxd4jyb73m" path="res://Scripts/ThinkPanel.gd" id="1_41d5f"]
+
+[node name="ThinkPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_41d5f")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0584206, 0.0584206, 0.0584206, 1)
+
+[node name="WordBankContainer" type="FlowContainer" parent="."]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -2.0
+offset_right = -9.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, -4.635)
+
+[node name="ParagraphArea" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ValidateButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -330.0
+offset_right = 26.0
+offset_bottom = -299.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Write"
+
+[connection signal="pressed" from="ValidateButton" to="." method="_on_validate_button_pressed"]

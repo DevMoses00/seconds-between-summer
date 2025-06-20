@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfoe6hrkiooir"]
+
+[ext_resource type="Script" uid="uid://b27ak2t02e7nw" path="res://Scripts/world_orb.gd" id="1_kr6y1"]
+[ext_resource type="Texture2D" uid="uid://bkksmyip6jb0v" path="res://Art/orbs.png" id="2_27g4x"]
+[ext_resource type="Texture2D" uid="uid://ck08jqlxg0swl" path="res://Art/images/place_holder.png" id="2_fsp11"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fsp11"]
+radius = 102.0
+
+[node name="WorldOrb" type="Area2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_kr6y1")
+image_texture = ExtResource("2_fsp11")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_27g4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_fsp11")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -26.0
+offset_top = 116.0
+offset_right = 29.0
+offset_bottom = 139.0
+text = "Press Z"
+horizontal_alignment = 1

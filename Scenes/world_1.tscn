@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://w2pbp1bs8lrx"]
+
+[ext_resource type="Script" uid="uid://c6kjk8vg6d34j" path="res://Scripts/world_1.gd" id="1_ax6sa"]
+[ext_resource type="Texture2D" uid="uid://16t2vbe6w4ip" path="res://Art/backgrounds/bg_past.png" id="1_nsk3r"]
+[ext_resource type="Shader" uid="uid://dt3777j0e7qda" path="res://Shaders/world_1.gdshader" id="2_12jk7"]
+[ext_resource type="Texture2D" uid="uid://bbgohsjj2rbvx" path="res://icon.svg" id="2_brd3p"]
+[ext_resource type="Script" uid="uid://b7hyib2qw0a8j" path="res://Scripts/camera_2d.gd" id="4_d4kua"]
+[ext_resource type="PackedScene" uid="uid://bfoe6hrkiooir" path="res://Scenes/world_orb.tscn" id="4_wyo6c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wyo6c"]
+shader = ExtResource("2_12jk7")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_scale = 15.0
+shader_parameter/distortion_strength = 0.01
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ax6sa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_brd3p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wyo6c"]
+radius = 77.1622
+
+[node name="World1" type="Node2D"]
+script = ExtResource("1_ax6sa")
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer"]
+material = SubResource("ShaderMaterial_wyo6c")
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("1_nsk3r")
+
+[node name="WorldObjects" type="Node2D" parent="."]
+
+[node name="WorldOrb" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(-1172, -534)
+orb_id = "world1_orb_01"
+message_text = "[url=hope][color=blue][u]hope[/u][/color][/url]"
+
+[node name="WorldOrb2" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(-1462, 1087)
+orb_id = "world1_orb_02"
+
+[node name="WorldOrb3" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(1971, 707)
+orb_id = "world1_orb_03"
+
+[node name="WorldOrb4" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(505, 1448)
+orb_id = "world1_orb_04"
+
+[node name="WorldOrb5" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(-1946, -1649)
+orb_id = "world1_orb_05"
+
+[node name="WorldOrb6" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(1413, -1370)
+orb_id = "world1_orb_06"
+
+[node name="WorldOrb7" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(-2581, -534)
+orb_id = "world1_orb_07"
+
+[node name="WorldOrb8" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(2674, -480)
+orb_id = "world1_orb_08"
+
+[node name="WorldOrb9" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(461, -797)
+orb_id = "world1_orb_09"
+
+[node name="WorldOrb10" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(-120, -1432)
+orb_id = "world1_orb_10"
+
+[node name="WorldOrb11" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(-2658, 650)
+orb_id = "world1_orb_11"
+
+[node name="WorldOrb12" parent="WorldObjects" instance=ExtResource("4_wyo6c")]
+position = Vector2(-383, 1726)
+orb_id = "world1_orb_12"
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+collision_mask = 3
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_ax6sa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_wyo6c")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("4_d4kua")
+
+[node name="PopupHolder" type="Node2D" parent="."]

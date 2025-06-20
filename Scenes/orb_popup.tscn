@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://kkvcihglya1k"]
+
+[ext_resource type="Script" uid="uid://ddqkt4nhy8tyq" path="res://Scripts/orb_popup.gd" id="1_thjk4"]
+[ext_resource type="Texture2D" uid="uid://ck08jqlxg0swl" path="res://Art/images/place_holder.png" id="2_xtsvt"]
+
+[node name="OrbPopup" type="CanvasLayer"]
+script = ExtResource("1_thjk4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(980, 1080)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_xtsvt")
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 41
+bbcode_enabled = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
