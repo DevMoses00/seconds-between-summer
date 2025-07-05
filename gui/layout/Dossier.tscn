@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd5erp5kcxi1b"]
+
+[ext_resource type="PackedScene" uid="uid://ddr5vavepsu8v" path="res://gui/components/DossierDocument.tscn" id="1_qjgup"]
+[ext_resource type="Script" uid="uid://c15ut4vbq8h4x" path="res://gui/components/DossierBlankEffect.gd" id="2_6u0ck"]
+[ext_resource type="FontFile" uid="uid://di053snk10ek5" path="res://Fonts/sunborn-sans-one.otf" id="2_w2ubr"]
+
+[sub_resource type="FontVariation" id="FontVariation_g25q3"]
+base_font = ExtResource("2_w2ubr")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_w2ubr"]
+resource_local_to_scene = true
+script = ExtResource("2_6u0ck")
+
+[node name="Dossier" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DossierDocument" parent="." instance=ExtResource("1_qjgup")]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_g25q3")
+text = "
+[blank ?=June][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] 5th, 2013,
+
+Going from a [blank ?=Dugard][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] to a [blank ?=Samson][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] should feel like a moment worth [blank ?=celebrating][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank]  (celebrating).
+
+There is so much [blank ?=wrong][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] these days, but [blank ?=marrying][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] and [blank ?=running][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] [blank ?=away][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] with [blank ?=Thomas][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] has felt like the only right thing these past few months. 
+
+My [blank ?=family][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank]  hasn't made it easy, and I know they don't [blank ?=understand][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank]  my thoughts on this. I got to get out of [blank ?=Prospect][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] once and for all. I'm sick of waiting for [blank ?=life][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] to start. 
+
+I hate [blank ?=nursing][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] [blank ?=school][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] . It's never been what I wanted. By [blank ?=leaving][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank], I'll have more time to really decide my [blank ?=future][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] .
+
+
+I know entertaining [blank ?=Auden][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] for any longer would have been a [blank ?=mistake][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] . He's been [blank ?=trouble][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] for me, and I know he won't make a good [blank ?=husband][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank]. I'm so over him, and forever will be.
+
+Even though it's only been three [blank ?=months][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank], [blank ?=Thomas][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] makes me feel like an actual [blank ?=person][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] . Is that too much to ask? I don't think so.
+
+There's so much I have to leave behind to move forward. I don't want to tell [blank ?=Momma][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank], but if I tell [blank ?=Steven][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank], he might be able to soften the blow.
+
+I finally feel ready to embark on this [blank ?=journey][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] with [blank ?=Thomas][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank], without any urge to [blank ?=write][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] about my life and actually start [blank ?=living][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] . "
+custom_effects = [SubResource("RichTextEffect_w2ubr")]

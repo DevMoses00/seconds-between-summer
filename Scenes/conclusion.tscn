@@ -1,0 +1,281 @@
+[gd_scene load_steps=23 format=3 uid="uid://cc1cxgo5p88d4"]
+
+[ext_resource type="Script" uid="uid://b17obqkwtfgg" path="res://conclusion.gd" id="1_kompq"]
+[ext_resource type="Shader" uid="uid://dt3777j0e7qda" path="res://Shaders/world_1.gdshader" id="2_jcrvv"]
+[ext_resource type="Texture2D" uid="uid://bv64liws5kamd" path="res://Art/backgrounds_updated/bg_future.png" id="3_gcbtg"]
+[ext_resource type="Texture2D" uid="uid://dmtl2q5oa73qo" path="res://Art/backgrounds_updated/bg_past.png" id="4_jmwgn"]
+[ext_resource type="PackedScene" uid="uid://rju8y304dhgf" path="res://gui/components/SourceDocument.tscn" id="5_hx1il"]
+[ext_resource type="PackedScene" uid="uid://blhrua7ucmnjo" path="res://gui/layout/WordBank.tscn" id="5_jcrvv"]
+[ext_resource type="FontFile" uid="uid://di053snk10ek5" path="res://Fonts/sunborn-sans-one.otf" id="6_kax2g"]
+[ext_resource type="Script" uid="uid://br4jp0d5vht75" path="res://gui/components/SourceClueEffect.gd" id="7_m14om"]
+[ext_resource type="PackedScene" uid="uid://dd5erp5kcxi1b" path="res://gui/layout/Dossier.tscn" id="9_m14om"]
+[ext_resource type="Script" uid="uid://c15ut4vbq8h4x" path="res://gui/components/DossierBlankEffect.gd" id="10_gcbtg"]
+[ext_resource type="Texture2D" uid="uid://ct6m5obcw3s3m" path="res://Art/white_screen.png" id="11_gcbtg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hx1il"]
+shader = ExtResource("2_jcrvv")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_scale = 15.0
+shader_parameter/distortion_strength = 0.01
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kax2g"]
+shader = ExtResource("2_jcrvv")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_scale = 15.0
+shader_parameter/distortion_strength = 0.01
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_gcbtg"]
+base_font = ExtResource("6_kax2g")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_grfqh"]
+resource_local_to_scene = true
+script = ExtResource("7_m14om")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ehecs"]
+resource_local_to_scene = true
+script = ExtResource("7_m14om")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_3gaj6"]
+resource_local_to_scene = true
+script = ExtResource("7_m14om")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_56mel"]
+resource_local_to_scene = true
+script = ExtResource("7_m14om")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_7jvuj"]
+resource_local_to_scene = true
+script = ExtResource("7_m14om")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_8nxm3"]
+resource_local_to_scene = true
+script = ExtResource("7_m14om")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ug8ko"]
+resource_local_to_scene = true
+script = ExtResource("7_m14om")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_4rcca"]
+resource_local_to_scene = true
+script = ExtResource("10_gcbtg")
+
+[node name="Conclusion" type="Node" node_paths=PackedStringArray("two", "three", "four", "five", "six", "seven")]
+script = ExtResource("1_kompq")
+two = NodePath("2")
+three = NodePath("3")
+four = NodePath("4")
+five = NodePath("5")
+six = NodePath("6")
+seven = NodePath("7")
+
+[node name="Background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hx1il")
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_gcbtg")
+
+[node name="BackgroundPast" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_kax2g")
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("4_jmwgn")
+
+[node name="1" type="MarginContainer" parent="."]
+offset_left = -815.0
+offset_top = -457.0
+offset_right = 832.0
+offset_bottom = 211.0
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 90
+
+[node name="SourceDocument" parent="1" node_paths=PackedStringArray("root") instance=ExtResource("5_hx1il")]
+custom_minimum_size = Vector2(30, 400)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_gcbtg")
+theme_override_font_sizes/normal_font_size = 50
+text = "I wanted to stop acting so foolishly [clue]eager[/clue]"
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_grfqh")]
+root = NodePath("../..")
+
+[node name="2" type="MarginContainer" parent="."]
+visible = false
+offset_left = -815.0
+offset_top = -457.0
+offset_right = 832.0
+offset_bottom = 211.0
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 90
+
+[node name="SourceDocument" parent="2" node_paths=PackedStringArray("root") instance=ExtResource("5_hx1il")]
+custom_minimum_size = Vector2(30, 400)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_gcbtg")
+theme_override_font_sizes/normal_font_size = 50
+text = "It was never the kind of [clue]woman[/clue] I wanted to be"
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_ehecs")]
+root = NodePath("../..")
+
+[node name="3" type="MarginContainer" parent="."]
+visible = false
+offset_left = -815.0
+offset_top = -457.0
+offset_right = 832.0
+offset_bottom = 211.0
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 90
+
+[node name="SourceDocument" parent="3" node_paths=PackedStringArray("root") instance=ExtResource("5_hx1il")]
+custom_minimum_size = Vector2(30, 400)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_gcbtg")
+theme_override_font_sizes/normal_font_size = 50
+text = "I thought I could live and be [clue]new[/clue], one with peace and control simultaneously"
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_3gaj6")]
+root = NodePath("../..")
+
+[node name="4" type="MarginContainer" parent="."]
+visible = false
+offset_left = -815.0
+offset_top = -457.0
+offset_right = 832.0
+offset_bottom = 211.0
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 90
+
+[node name="SourceDocument" parent="4" node_paths=PackedStringArray("root") instance=ExtResource("5_hx1il")]
+custom_minimum_size = Vector2(30, 400)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_gcbtg")
+theme_override_font_sizes/normal_font_size = 50
+text = "It could have been [clue]here[/clue], there, or somewhere else entirely
+But only shadows followed me"
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_56mel")]
+root = NodePath("../..")
+
+[node name="5" type="MarginContainer" parent="."]
+visible = false
+offset_left = -815.0
+offset_top = -457.0
+offset_right = 832.0
+offset_bottom = 211.0
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 90
+
+[node name="SourceDocument" parent="5" node_paths=PackedStringArray("root") instance=ExtResource("5_hx1il")]
+custom_minimum_size = Vector2(30, 400)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_gcbtg")
+theme_override_font_sizes/normal_font_size = 50
+text = "Shadows manifested in the form of men with a particularly selfish [clue]appetite[/clue] for stripping young women's autonomy until they're too broken to stand apart from them"
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_7jvuj")]
+root = NodePath("../..")
+
+[node name="6" type="MarginContainer" parent="."]
+visible = false
+offset_left = -815.0
+offset_top = -457.0
+offset_right = 832.0
+offset_bottom = 211.0
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 90
+
+[node name="SourceDocument" parent="6" node_paths=PackedStringArray("root") instance=ExtResource("5_hx1il")]
+custom_minimum_size = Vector2(30, 400)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_gcbtg")
+theme_override_font_sizes/normal_font_size = 50
+text = " I wanted to [clue]swim[/clue] beyond them, all of them"
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_8nxm3")]
+root = NodePath("../..")
+
+[node name="7" type="MarginContainer" parent="."]
+visible = false
+offset_left = -815.0
+offset_top = -457.0
+offset_right = 832.0
+offset_bottom = 211.0
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 90
+
+[node name="SourceDocument" parent="7" node_paths=PackedStringArray("root") instance=ExtResource("5_hx1il")]
+custom_minimum_size = Vector2(30, 400)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_gcbtg")
+theme_override_font_sizes/normal_font_size = 50
+text = "But navigating this [clue]water[/clue] has been nothing short of a lesson in love and its waves
+"
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_ug8ko")]
+root = NodePath("../..")
+
+[node name="BackgroundTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="EndDossier" parent="." instance=ExtResource("9_m14om")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.076
+anchor_top = 0.151
+anchor_right = 0.076
+anchor_bottom = 0.151
+offset_left = -767.92
+offset_top = -487.08
+offset_right = 454.08
+offset_bottom = 587.92
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_constants/margin_left = 230
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 230
+theme_override_constants/margin_bottom = 700
+
+[node name="DossierDocument" parent="EndDossier" index="0"]
+theme_override_font_sizes/normal_font_size = 32
+text = "
+I [blank ?=swim][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] in this [blank ?=water][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] as the [blank ?=woman][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] I've always been: irritated at it all with an [blank ?=eager;appetite][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] [blank ?=appetite;eager][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] for an entirely [blank ?=new][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] life from the one that led me [blank ?=here][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank].
+
+"
+horizontal_alignment = 1
+custom_effects = [SubResource("RichTextEffect_4rcca")]
+
+[node name="WordBank" parent="." instance=ExtResource("5_jcrvv")]
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = -955.0
+offset_top = 222.0
+offset_right = 962.0
+offset_bottom = 544.0
+grow_horizontal = 1
+alignment = 1
+
+[node name="WhiteScreen" type="Sprite2D" parent="."]
+texture = ExtResource("11_gcbtg")
+
+[connection signal="timeout" from="BackgroundTimer" to="." method="_on_background_timer_timeout"]
+
+[editable path="1/SourceDocument"]
+[editable path="2/SourceDocument"]
+[editable path="3/SourceDocument"]
+[editable path="4/SourceDocument"]
+[editable path="5/SourceDocument"]
+[editable path="6/SourceDocument"]
+[editable path="7/SourceDocument"]
+[editable path="EndDossier"]

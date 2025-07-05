@@ -1,11 +1,45 @@
-[gd_scene load_steps=10 format=3 uid="uid://dams0xkhhr2e2"]
+[gd_scene load_steps=14 format=3 uid="uid://dams0xkhhr2e2"]
 
 [ext_resource type="Script" uid="uid://dartx52loxom" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://w2pbp1bs8lrx" path="res://Scenes/world_1.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://ckoaqys02eaya" path="res://Scenes/world_2.tscn" id="2_8gbba"]
-[ext_resource type="Texture2D" uid="uid://bbgohsjj2rbvx" path="res://icon.svg" id="2_21xkr"]
 [ext_resource type="PackedScene" uid="uid://bai31cgjserhn" path="res://Scenes/think_panel.tscn" id="3_6bp64"]
 [ext_resource type="Shader" uid="uid://c06lnf1a6uj3x" path="res://Shaders/main.gdshader" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://bxqdkfffl40y5" path="res://Art/button'/1.png" id="5_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://7vqrnl1pngd5" path="res://Art/button'/2.png" id="6_hptm8"]
+[ext_resource type="Texture2D" uid="uid://ct6m5obcw3s3m" path="res://Art/white_screen.png" id="7_6bp64"]
+
+[sub_resource type="Shader" id="Shader_21xkr"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform float blur_size = 2.0;
+
+void fragment() {
+    vec4 sum = vec4(0.0);
+    vec2 size = blur_size * TEXTURE_PIXEL_SIZE;
+
+    sum += texture(TEXTURE, UV + vec2(-size.x, -size.y)) * 0.0625;
+    sum += texture(TEXTURE, UV + vec2( 0.0,    -size.y)) * 0.125;
+    sum += texture(TEXTURE, UV + vec2( size.x, -size.y)) * 0.0625;
+
+    sum += texture(TEXTURE, UV + vec2(-size.x, 0.0))    * 0.125;
+    sum += texture(TEXTURE, UV)                         * 0.25;
+    sum += texture(TEXTURE, UV + vec2( size.x, 0.0))    * 0.125;
+
+    sum += texture(TEXTURE, UV + vec2(-size.x, size.y)) * 0.0625;
+    sum += texture(TEXTURE, UV + vec2( 0.0,    size.y)) * 0.125;
+    sum += texture(TEXTURE, UV + vec2( size.x, size.y)) * 0.0625;
+
+    // Multiply by modulate color
+    COLOR = sum * COLOR;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6bp64"]
+resource_local_to_scene = true
+shader = SubResource("Shader_21xkr")
+shader_parameter/blur_size = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kry3j"]
 shader = ExtResource("4_jjvhh")
@@ -13,7 +47,7 @@ shader = ExtResource("4_jjvhh")
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jjvhh"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_344ge"]
-specular_texture = ExtResource("2_21xkr")
+specular_texture = ExtResource("6_hptm8")
 specular_color = Color(0.12, 0.0024, 0.0024, 1)
 
 [node name="Main" type="Control"]
@@ -38,6 +72,12 @@ render_target_update_mode = 4
 
 [node name="World1" parent="SubViewportContainer1/SubViewport1" instance=ExtResource("1_bo1nx")]
 
+[node name="Player" parent="SubViewportContainer1/SubViewport1/World1" index="2"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="ShadowSprite" parent="SubViewportContainer1/SubViewport1/World1/Player" index="0"]
+material = SubResource("ShaderMaterial_6bp64")
+
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
 custom_minimum_size = Vector2(960, 1080)
 layout_mode = 0
@@ -52,6 +92,9 @@ render_target_update_mode = 4
 
 [node name="World2" parent="SubViewportContainer2/SubViewport2" instance=ExtResource("2_8gbba")]
 
+[node name="Player" parent="SubViewportContainer2/SubViewport2/World2" index="3"]
+modulate = Color(1, 1, 1, 0)
+
 [node name="SeamEffect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_kry3j")
 layout_mode = 0
@@ -63,24 +106,51 @@ texture = SubResource("PlaceholderTexture2D_jjvhh")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="TextureButton" type="TextureButton" parent="UI"]
-offset_left = 900.0
-offset_top = 661.0
-offset_right = 1028.0
-offset_bottom = 789.0
-texture_normal = ExtResource("2_21xkr")
+offset_left = 879.0
+offset_top = 894.0
+offset_right = 2879.0
+offset_bottom = 2894.0
+scale = Vector2(0.08, 0.08)
+texture_normal = ExtResource("5_ynf5e")
 texture_pressed = SubResource("CanvasTexture_344ge")
+texture_hover = ExtResource("6_hptm8")
 
 [node name="ThinkPanel" parent="UI" instance=ExtResource("3_6bp64")]
 visible = false
 
 [node name="CloseButton" type="TextureButton" parent="UI/ThinkPanel"]
 layout_mode = 0
-offset_left = 900.0
-offset_top = 571.0
-offset_right = 1028.0
-offset_bottom = 699.0
-texture_normal = ExtResource("2_21xkr")
+offset_left = 881.0
+offset_top = 893.0
+offset_right = 2881.0
+offset_bottom = 2893.0
+scale = Vector2(0.08, 0.08)
+texture_normal = ExtResource("6_hptm8")
 texture_pressed = SubResource("CanvasTexture_344ge")
+texture_hover = ExtResource("5_ynf5e")
+
+[node name="WhiteScreen" type="Sprite2D" parent="UI"]
+position = Vector2(962, 536)
+texture = ExtResource("7_6bp64")
 
 [connection signal="pressed" from="UI/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="UI/ThinkPanel/CloseButton" to="." method="_on_close_button_pressed"]
+
+[editable path="SubViewportContainer1/SubViewport1/World1"]
+[editable path="SubViewportContainer1/SubViewport1/World1/WorldObjects/WorldOrb"]
+[editable path="SubViewportContainer1/SubViewport1/World1/WorldObjects/WorldOrb2"]
+[editable path="SubViewportContainer1/SubViewport1/World1/WorldObjects/WorldOrb3"]
+[editable path="SubViewportContainer1/SubViewport1/World1/WorldObjects/WorldOrb4"]
+[editable path="SubViewportContainer1/SubViewport1/World1/WorldObjects/WorldOrb5"]
+[editable path="SubViewportContainer1/SubViewport1/World1/WorldObjects/WorldOrb6"]
+[editable path="SubViewportContainer1/SubViewport1/World1/WorldObjects/WorldOrb8"]
+[editable path="SubViewportContainer1/SubViewport1/World1/WorldObjects/WorldOrb9"]
+[editable path="SubViewportContainer2/SubViewport2/World2"]
+[editable path="SubViewportContainer2/SubViewport2/World2/WorldObjects/WorldOrb"]
+[editable path="SubViewportContainer2/SubViewport2/World2/WorldObjects/WorldOrb2"]
+[editable path="SubViewportContainer2/SubViewport2/World2/WorldObjects/WorldOrb4"]
+[editable path="SubViewportContainer2/SubViewport2/World2/WorldObjects/WorldOrb5"]
+[editable path="SubViewportContainer2/SubViewport2/World2/WorldObjects/WorldOrb6"]
+[editable path="SubViewportContainer2/SubViewport2/World2/WorldObjects/WorldOrb7"]
+[editable path="SubViewportContainer2/SubViewport2/World2/WorldObjects/WorldOrb8"]
+[editable path="SubViewportContainer2/SubViewport2/World2/WorldObjects/WorldOrb10"]

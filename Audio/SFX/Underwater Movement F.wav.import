@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7a2xcgcg6fle"
+path="res://.godot/imported/Underwater Movement F.wav-5dad774f07e37d43a2378f309a53179b.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Underwater Movement F.wav"
+dest_files=["res://.godot/imported/Underwater Movement F.wav-5dad774f07e37d43a2378f309a53179b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cpraywffwkf02"
+path="res://.godot/imported/Synth Discover C.wav-a5ece0a83c85d06b4a6c864355a412cc.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Synth Discover C.wav"
+dest_files=["res://.godot/imported/Synth Discover C.wav-a5ece0a83c85d06b4a6c864355a412cc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bai31cgjserhn"]
+[gd_scene load_steps=8 format=3 uid="uid://bai31cgjserhn"]
 
-[ext_resource type="Script" uid="uid://ybfxd4jyb73m" path="res://Scripts/ThinkPanel.gd" id="1_41d5f"]
+[ext_resource type="Script" uid="uid://u2ysfky7tmid" path="res://Scenes/think_panel.gd" id="1_0na3l"]
+[ext_resource type="PackedScene" uid="uid://dd5erp5kcxi1b" path="res://gui/layout/Dossier.tscn" id="1_41d5f"]
+[ext_resource type="Script" uid="uid://c15ut4vbq8h4x" path="res://gui/components/DossierBlankEffect.gd" id="2_0na3l"]
+[ext_resource type="PackedScene" uid="uid://blhrua7ucmnjo" path="res://gui/layout/WordBank.tscn" id="3_h5u4g"]
+[ext_resource type="Texture2D" uid="uid://ct6m5obcw3s3m" path="res://Art/white_screen.png" id="5_h5u4g"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_h5u4g"]
+resource_local_to_scene = true
+script = ExtResource("2_0na3l")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_6bokh"]
+resource_local_to_scene = true
+script = ExtResource("2_0na3l")
 
 [node name="ThinkPanel" type="Control"]
 layout_mode = 3
@@ -9,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_41d5f")
+script = ExtResource("1_0na3l")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -18,45 +30,90 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0584206, 0.0584206, 0.0584206, 1)
+color = Color(0, 0, 0, 0.27451)
 
-[node name="WordBankContainer" type="FlowContainer" parent="."]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -9.0
-offset_top = -2.0
-offset_right = -9.0
-offset_bottom = 62.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1, -4.635)
+[node name="ResearchArea" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = -2.0
+offset_right = 1918.0
+offset_bottom = 966.0
+size_flags_vertical = 3
+theme_override_constants/separation = 20
 
-[node name="ParagraphArea" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
+[node name="Past Dossier" parent="ResearchArea" instance=ExtResource("1_41d5f")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 220
 
-[node name="ValidateButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -25.0
-offset_top = -330.0
-offset_right = 26.0
-offset_bottom = -299.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Write"
+[node name="DossierDocument" parent="ResearchArea/Past Dossier" index="0"]
+text = "
+[blank ?=June][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] 5th, 2013,
 
-[connection signal="pressed" from="ValidateButton" to="." method="_on_validate_button_pressed"]
+Going from a [blank ?=Dugard][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] to a [blank ?=Samson][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] should feel like a moment worth celebrating.
+
+I know[blank ?=Momma][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] doesn't understand, but she'll come around to it. [blank ?=Marrying][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] [blank ?=Thomas][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] has felt like the only right thing these past few months. 
+
+I'll finally leave [blank ?=Prospect][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] once and for all. I hate [blank ?=school][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] . I never wanted to be a nurse. Now, I'll have more time to really decide my [blank ?=future][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] .
+
+I know entertaining [blank ?=Auden][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] for this long was a mistake. I'm so over him, and forever will be.
+
+Even though it's only been three months, [blank ?=Thomas][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] makes me feel like an actual [blank ?=person][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] . Is that too much to ask? I don't think so.
+
+I finally feel ready to live without any urge to [blank ?=write][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] about the life I've dreamt up.
+
+"
+custom_effects = [SubResource("RichTextEffect_h5u4g")]
+
+[node name="Future Dossier" parent="ResearchArea" instance=ExtResource("1_41d5f")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 250
+
+[node name="DossierDocument" parent="ResearchArea/Future Dossier" index="0"]
+text = "
+[blank ?=June][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] 11th, 2014,
+
+It's an odd but comfortable sensation to [blank ?=write][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] again.
+
+Yes, [blank ?=Thomas][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] was a mistake. The moment we stepped foot in  [blank ?=Whitewater][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank], we were already on the back burner.
+
+I thought if we could push through that, but he didn't want me. I didn't really want him. We were each other's good reason to leave [blank ?=Prospect][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank].
+
+This will take time to adjust to. Going from [blank ?=Samson][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] back to [blank ?=Dugard][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] will be easier, knowing [blank ?=Momma][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] will welcome me back into the fold.
+
+I don't know what my new [blank ?=future][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] is. I know it's not [blank ?=Auden][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank], he's gone for good. I will take time for myself this season. by cooling off and swimming the [blank ?=past][img]res://gui/theme/blanks/blue_blank_texture.tres[/img][/blank] away.
+
+"
+custom_effects = [SubResource("RichTextEffect_6bokh")]
+
+[node name="WordBank" parent="." instance=ExtResource("3_h5u4g")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 5.0
+offset_top = 792.0
+offset_right = 1925.0
+offset_bottom = 932.0
+alignment = 1
+
+[node name="Layout" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+offset_left = -2.0
+offset_right = 1918.0
+offset_bottom = 1126.0
+theme_override_constants/separation = 20
+
+[node name="WhiteScreen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("5_h5u4g")
+
+[editable path="ResearchArea/Past Dossier"]
+[editable path="ResearchArea/Future Dossier"]

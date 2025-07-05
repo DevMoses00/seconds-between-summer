@@ -1,0 +1,138 @@
+[gd_scene load_steps=24 format=3 uid="uid://dey1udf3ubxuo"]
+
+[ext_resource type="Shader" uid="uid://dt3777j0e7qda" path="res://Shaders/world_1.gdshader" id="1_02kpm"]
+[ext_resource type="Script" uid="uid://c81b736tim8k4" path="res://Scenes/end.gd" id="1_q5l5q"]
+[ext_resource type="Texture2D" uid="uid://bv64liws5kamd" path="res://Art/backgrounds_updated/bg_future.png" id="3_kx0vo"]
+[ext_resource type="FontFile" uid="uid://di053snk10ek5" path="res://Fonts/sunborn-sans-one.otf" id="3_q5l5q"]
+[ext_resource type="Texture2D" uid="uid://ct6m5obcw3s3m" path="res://Art/white_screen.png" id="5_t3us6"]
+[ext_resource type="Texture2D" uid="uid://dk87hymufe61i" path="res://Resources/Primary_White_Cropped.png" id="6_kx0vo"]
+[ext_resource type="Texture2D" uid="uid://cmgt7xvkaj41m" path="res://Art/panels/world2/W204-2.png" id="6_t3us6"]
+[ext_resource type="Texture2D" uid="uid://nshpxdrxbyfg" path="res://Resources/Theme_logo.png" id="7_iv03m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t3us6"]
+shader = ExtResource("1_02kpm")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_scale = 15.0
+shader_parameter/distortion_strength = 0.01
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_d0yn4"]
+base_font = ExtResource("3_q5l5q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d0yn4"]
+shader = ExtResource("1_02kpm")
+shader_parameter/wave_speed = 1.15
+shader_parameter/wave_scale = 5.62
+shader_parameter/distortion_strength = 0.003
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_q5l5q"]
+base_font = ExtResource("3_q5l5q")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t3us6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d0yn4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx0vo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iv03m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_076sf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pa61i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vytj"]
+modulate_color = Color(0.54, 0.54, 0.54, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h8xgm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ika66"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1bme"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5hsy"]
+
+[node name="end" type="Node2D"]
+script = ExtResource("1_q5l5q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_t3us6")
+position = Vector2(72.0002, 90.0001)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_kx0vo")
+
+[node name="Thanks" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -964.0
+offset_top = -513.0
+offset_right = 162.99
+offset_bottom = -13.0001
+scale = Vector2(1.67, 1.67)
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.898039, 0.921569, 0.992157, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_d0yn4")
+theme_override_font_sizes/normal_font_size = 81
+text = "THANK YOU FOR PLAYING"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Thanks2" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -891.0
+offset_top = -326.0
+offset_right = 235.99
+offset_bottom = 174.0
+scale = Vector2(1.57, 1.57)
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.898039, 0.921569, 0.992157, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_d0yn4")
+theme_override_font_sizes/normal_font_size = 41
+text = "FOLLOW VINE MOSS GAMES FOR UPDATES ON Seconds Between SUmmer and more
+
+"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="W204-2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_d0yn4")
+position = Vector2(23, 342)
+scale = Vector2(2, 2)
+texture = ExtResource("6_t3us6")
+
+[node name="PrimaryWhiteCropped" type="Sprite2D" parent="."]
+position = Vector2(-721, 206)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_kx0vo")
+
+[node name="ThemeLogo" type="Sprite2D" parent="."]
+position = Vector2(748, 234)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("7_iv03m")
+
+[node name="WhiteScreen" type="Sprite2D" parent="."]
+texture = ExtResource("5_t3us6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -159.0
+offset_top = 20.0
+offset_right = 164.0
+offset_bottom = 170.0
+theme_override_fonts/font = SubResource("FontVariation_q5l5q")
+theme_override_font_sizes/font_size = 101
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t3us6")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_d0yn4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kx0vo")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_iv03m")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_076sf")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_pa61i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7vytj")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_h8xgm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ika66")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_s1bme")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g5hsy")
+text = "END"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

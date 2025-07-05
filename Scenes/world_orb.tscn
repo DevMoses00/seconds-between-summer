@@ -1,22 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfoe6hrkiooir"]
+[gd_scene load_steps=8 format=3 uid="uid://bfoe6hrkiooir"]
 
 [ext_resource type="Script" uid="uid://b27ak2t02e7nw" path="res://Scripts/world_orb.gd" id="1_kr6y1"]
+[ext_resource type="Shader" uid="uid://dt3777j0e7qda" path="res://Shaders/world_1.gdshader" id="2_5i8px"]
 [ext_resource type="Texture2D" uid="uid://bkksmyip6jb0v" path="res://Art/orbs.png" id="2_27g4x"]
-[ext_resource type="Texture2D" uid="uid://ck08jqlxg0swl" path="res://Art/images/place_holder.png" id="2_fsp11"]
+[ext_resource type="FontFile" uid="uid://di053snk10ek5" path="res://Fonts/sunborn-sans-one.otf" id="3_fsp11"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hrnxw"]
+shader = ExtResource("2_5i8px")
+shader_parameter/wave_speed = 3.14
+shader_parameter/wave_scale = 35.15
+shader_parameter/distortion_strength = 0.015
+shader_parameter/player_velocity = Vector2(0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fsp11"]
 radius = 102.0
 
-[node name="WorldOrb" type="Area2D"]
+[sub_resource type="FontVariation" id="FontVariation_5i8px"]
+base_font = ExtResource("3_fsp11")
+
+[node name="WorldOrb" type="Area2D" node_paths=PackedStringArray("message_text")]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_kr6y1")
-image_texture = ExtResource("2_fsp11")
+message_text = NodePath("RichTextLabel")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hrnxw")
 texture = ExtResource("2_27g4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_fsp11")
 
@@ -24,9 +37,17 @@ shape = SubResource("CircleShape2D_fsp11")
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -26.0
-offset_top = 116.0
-offset_right = 29.0
-offset_bottom = 139.0
-text = "Press Z"
+offset_left = -76.0
+offset_top = 106.0
+offset_right = 78.0
+offset_bottom = 178.0
+theme_override_fonts/font = SubResource("FontVariation_5i8px")
+theme_override_font_sizes/font_size = 51
+text = "SPACE"
 horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+bbcode_enabled = true

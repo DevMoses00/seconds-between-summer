@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://de0343tlm80ib"
+path="res://.godot/imported/Wave Small C.wav-af4d0ce657b9ad097d660ad512684d10.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Wave Small C.wav"
+dest_files=["res://.godot/imported/Wave Small C.wav-af4d0ce657b9ad097d660ad512684d10.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

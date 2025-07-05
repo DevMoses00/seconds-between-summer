@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bw3kiiyjhkgkn"
+path="res://.godot/imported/Slow Woosh A.wav-4d5bdd6aa2430c798de84aa4791fe87e.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Slow Woosh A.wav"
+dest_files=["res://.godot/imported/Slow Woosh A.wav-4d5bdd6aa2430c798de84aa4791fe87e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

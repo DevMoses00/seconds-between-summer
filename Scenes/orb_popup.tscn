@@ -1,12 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://kkvcihglya1k"]
+[gd_scene load_steps=12 format=3 uid="uid://kkvcihglya1k"]
 
 [ext_resource type="Script" uid="uid://ddqkt4nhy8tyq" path="res://Scripts/orb_popup.gd" id="1_thjk4"]
-[ext_resource type="Texture2D" uid="uid://ck08jqlxg0swl" path="res://Art/images/place_holder.png" id="2_xtsvt"]
+[ext_resource type="Texture2D" uid="uid://bw1qrvumae2wc" path="res://Art/panels/world1/W101-1.png" id="2_clfil"]
+[ext_resource type="Shader" uid="uid://dt3777j0e7qda" path="res://Shaders/world_1.gdshader" id="2_hi53x"]
+[ext_resource type="PackedScene" uid="uid://rju8y304dhgf" path="res://gui/components/SourceDocument.tscn" id="3_4jn5u"]
+[ext_resource type="Texture2D" uid="uid://coab27wdvvb76" path="res://Art/panels/world1/W101-2.png" id="3_os4ey"]
+[ext_resource type="Script" uid="uid://br4jp0d5vht75" path="res://gui/components/SourceClueEffect.gd" id="4_clfil"]
+[ext_resource type="FontFile" uid="uid://di053snk10ek5" path="res://Fonts/sunborn-sans-one.otf" id="4_os4ey"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_akhqq"]
+shader = ExtResource("2_hi53x")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_scale = 3.0
+shader_parameter/distortion_strength = 0.005
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o1p7m"]
+shader = ExtResource("2_hi53x")
+shader_parameter/wave_speed = 1.09
+shader_parameter/wave_scale = 4.26
+shader_parameter/distortion_strength = 0.003
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_hi53x"]
+base_font = ExtResource("4_os4ey")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_hi53x"]
+resource_local_to_scene = true
+script = ExtResource("4_clfil")
 
 [node name="OrbPopup" type="CanvasLayer"]
 script = ExtResource("1_thjk4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,26 +49,63 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+self_modulate = Color(1, 1, 1, 0.352941)
 custom_minimum_size = Vector2(980, 1080)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/Control"]
+material = SubResource("ShaderMaterial_akhqq")
+layout_mode = 2
+offset_left = 5.0
+offset_top = -539.0
+offset_right = 985.0
+offset_bottom = 137.0
 size_flags_vertical = 3
-texture = ExtResource("2_xtsvt")
+texture = ExtResource("2_clfil")
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PanelContainer/VBoxContainer"]
+[node name="ControlFore" type="Control" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 41
-bbcode_enabled = true
-scroll_active = false
-autowrap_mode = 2
-horizontal_alignment = 1
+
+[node name="Foreground" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/ControlFore"]
+material = SubResource("ShaderMaterial_o1p7m")
+layout_mode = 2
+offset_left = 3.0
+offset_top = -396.0
+offset_right = 983.0
+offset_bottom = 132.0
+texture = ExtResource("3_os4ey")
+stretch_mode = 4
+
+[node name="Control2" type="Control" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/VBoxContainer/Control2"]
+layout_mode = 2
+offset_left = 6.0
+offset_top = 87.0
+offset_right = 986.0
+offset_bottom = 487.0
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 90
+
+[node name="SourceDocument" parent="CenterContainer/PanelContainer/VBoxContainer/Control2/MarginContainer" node_paths=PackedStringArray("root") instance=ExtResource("3_4jn5u")]
+custom_minimum_size = Vector2(30, 400)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_hi53x")
+theme_override_font_sizes/normal_font_size = 31
 vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_hi53x")]
+root = NodePath("../../../../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[editable path="CenterContainer/PanelContainer/VBoxContainer/Control2/MarginContainer/SourceDocument"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://kt61571tviuq"]
+
+[ext_resource type="FontFile" uid="uid://di053snk10ek5" path="res://Fonts/sunborn-sans-one.otf" id="1_506r1"]
+
+[sub_resource type="FontVariation" id="FontVariation_c511t"]
+base_font = ExtResource("1_506r1")
+
+[node name="WordBankEntry" type="Label"]
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_type_variation = &"WordBankEntry"
+theme_override_fonts/font = SubResource("FontVariation_c511t")
+theme_override_font_sizes/font_size = 20
+text = "Entry Text"

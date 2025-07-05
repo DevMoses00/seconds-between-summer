@@ -1,0 +1,168 @@
+[gd_scene load_steps=31 format=3 uid="uid://igcfo08t3cjg"]
+
+[ext_resource type="Shader" uid="uid://dt3777j0e7qda" path="res://Shaders/world_1.gdshader" id="1_duh1u"]
+[ext_resource type="Script" uid="uid://dgo1prj2tf4s0" path="res://Scenes/intro.gd" id="1_geirw"]
+[ext_resource type="Texture2D" uid="uid://dk87hymufe61i" path="res://Resources/Primary_White_Cropped.png" id="3_alxvg"]
+[ext_resource type="Texture2D" uid="uid://bv64liws5kamd" path="res://Art/backgrounds_updated/bg_future.png" id="3_pgam6"]
+[ext_resource type="FontFile" uid="uid://di053snk10ek5" path="res://Fonts/sunborn-sans-one.otf" id="6_rsiac"]
+[ext_resource type="Texture2D" uid="uid://ct6m5obcw3s3m" path="res://Art/white_screen.png" id="7_3bmuq"]
+[ext_resource type="Texture2D" uid="uid://dkg3vgp4alolg" path="res://Art/Titles/Untitled_Artwork-2 3.png" id="7_nn7w8"]
+[ext_resource type="Texture2D" uid="uid://dmtl2q5oa73qo" path="res://Art/backgrounds_updated/bg_past.png" id="7_pgam6"]
+[ext_resource type="Texture2D" uid="uid://csilcx6lpjb67" path="res://Art/Titles/Untitled_Artwork-5.png" id="8_ewknp"]
+[ext_resource type="Texture2D" uid="uid://cwms6ajopwo12" path="res://Art/Titles/Untitled_Artwork-4.png" id="9_a7jvs"]
+[ext_resource type="Texture2D" uid="uid://po6n54i2e4xc" path="res://Art/Titles/Untitled_Artwork-1 2.png" id="10_pgam6"]
+[ext_resource type="Texture2D" uid="uid://3s2utbbbex5e" path="res://Art/Titles/Untitled_Artwork-3.png" id="11_itfcf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_geirw"]
+shader = ExtResource("1_duh1u")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_scale = 15.0
+shader_parameter/distortion_strength = 0.01
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rsiac"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgam6"]
+shader = ExtResource("1_duh1u")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_scale = 30.0
+shader_parameter/distortion_strength = 0.005
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itfcf"]
+shader = ExtResource("1_duh1u")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_scale = 30.0
+shader_parameter/distortion_strength = 0.005
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8dlr"]
+shader = ExtResource("1_duh1u")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_scale = 30.0
+shader_parameter/distortion_strength = 0.005
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rsiac"]
+shader = ExtResource("1_duh1u")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_scale = 15.0
+shader_parameter/distortion_strength = 0.01
+shader_parameter/player_velocity = Vector2(0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_3bmuq"]
+base_font = ExtResource("6_rsiac")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rsiac"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3bmuq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nn7w8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b26wi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ewknp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a7jvs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pgam6"]
+modulate_color = Color(0.54, 0.54, 0.54, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_itfcf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g8dlr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33jql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iab25"]
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_geirw")
+
+[node name="Background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_geirw")
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_pgam6")
+
+[node name="Yellow" type="Node2D" parent="Background"]
+position = Vector2(8.75, -586.25)
+scale = Vector2(0.50625, 0.50625)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Yellow"]
+sprite_frames = SubResource("SpriteFrames_rsiac")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Yellow"]
+material = SubResource("ShaderMaterial_pgam6")
+texture = ExtResource("10_pgam6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Yellow"]
+material = SubResource("ShaderMaterial_itfcf")
+texture = ExtResource("8_ewknp")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background/Yellow"]
+material = SubResource("ShaderMaterial_g8dlr")
+texture = ExtResource("11_itfcf")
+
+[node name="BackgroundPast" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_rsiac")
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("7_pgam6")
+
+[node name="Orange" type="Node2D" parent="BackgroundPast"]
+position = Vector2(8.75, -586.25)
+scale = Vector2(0.50625, 0.50625)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BackgroundPast/Orange"]
+sprite_frames = SubResource("SpriteFrames_rsiac")
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundPast/Orange"]
+material = SubResource("ShaderMaterial_pgam6")
+texture = ExtResource("7_nn7w8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BackgroundPast/Orange"]
+material = SubResource("ShaderMaterial_itfcf")
+texture = ExtResource("8_ewknp")
+
+[node name="Sprite2D3" type="Sprite2D" parent="BackgroundPast/Orange"]
+material = SubResource("ShaderMaterial_g8dlr")
+texture = ExtResource("9_a7jvs")
+
+[node name="Logo" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_alxvg")
+
+[node name="BackgroundTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -152.0
+offset_top = 310.0
+offset_right = 171.0
+offset_bottom = 460.0
+theme_override_fonts/font = SubResource("FontVariation_3bmuq")
+theme_override_font_sizes/font_size = 101
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rsiac")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3bmuq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nn7w8")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_b26wi")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ewknp")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_a7jvs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pgam6")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_itfcf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_g8dlr")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_33jql")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iab25")
+disabled = true
+text = "START"
+
+[node name="WhiteScreen" type="Sprite2D" parent="."]
+texture = ExtResource("7_3bmuq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="timeout" from="BackgroundTimer" to="." method="_on_background_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
